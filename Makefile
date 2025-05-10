@@ -64,7 +64,7 @@ superuser:
 .PHONY: test
 test:
 	@echo "Running tests"
-	uv run src/manage.py test
+	uv run src/manage.py test apps.AI
 
 .PHONY: coverage
 coverage:

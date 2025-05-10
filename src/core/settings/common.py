@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # "ninja-extra",
     # Local apps
     "apps.AI.apps.AiConfig",
+    "apps.chat.apps.ChatConfig",
 ]
 
 MIDDLEWARE = [

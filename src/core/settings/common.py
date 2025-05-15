@@ -30,10 +30,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third-party apps
+    "channels",
     # "ninja-extra",
     # Local apps
+    "core.apps.CoreConfig",
     "apps.AI.apps.AiConfig",
     "apps.chat.apps.ChatConfig",
+    "apps.tokens.apps.TokensConfig",
 ]
 
 MIDDLEWARE = [

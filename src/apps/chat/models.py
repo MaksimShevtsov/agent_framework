@@ -2,7 +2,20 @@ from django.db import models
 from apps.AI.models import AIModel
 
 
-# Create your models here.
+class ChatUser(models.Model):
+    """
+    Model representing a user in a chat session.
+    """
+
+    is_verified = models.BooleanField(default=False)
+    settings = models.JSONField(default=dict)
+
+    class Meta:
+        verbose_name = "Chat User"
+        verbose_name_plural = "Chat Users"
+        db_table = "chat_user"
+
+
 class Chat(models.Model):
     """
     Model representing a chat session.
@@ -15,7 +28,7 @@ class Chat(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Chat {self.id} for User {self.user.id}"
+        return f"Chat {self.pk} for User {self.user.id}"
 
     class Meta:
         verbose_name = "Chat"
@@ -53,7 +66,7 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Message {self.id} in Thread {self.thread.id}"
+        return f"Message {self.pk} in Thread {self.thread.pk}"
 
     class Meta:
         verbose_name = "Message"
@@ -83,7 +96,7 @@ class Conversation(models.Model):
     is_archived = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Conversation {self.id} in Chat {self.chat.id}"
+        return f"Conversation {self.pk} in Chat {self.chat.pk}"
 
     class Meta:
         verbose_name = "Conversation"
@@ -106,7 +119,7 @@ class Thread(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Thread {self.id} in Conversation {self.chat.id}"
+        return f"Thread {self.pk} in Conversation {self.conversation.pk}"
 
     class Meta:
         verbose_name = "Thread"

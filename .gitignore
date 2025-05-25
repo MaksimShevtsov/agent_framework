@@ -34,3 +34,7 @@ media/
 
 # nginx
 *.conf
+
+# node modules
+**/node_modules/
+client-react/node_modules/

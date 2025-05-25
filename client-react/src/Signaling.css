@@ -1,0 +1,169 @@
+/* Signaling.css */
+.signaling-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.call-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.call-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.start-call {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+}
+
+.start-call:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.end-call {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  color: white;
+}
+
+.end-call:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+}
+
+.mute-button {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: 2px solid #ddd;
+}
+
+.mute-button.muted {
+  background: #f44336;
+  color: white;
+  border-color: #f44336;
+}
+
+.mute-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.connecting-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 10px;
+}
+
+.connecting-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #ff9800;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.in-call-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 10px;
+}
+
+.call-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-weight: 600;
+  color: #4caf50;
+}
+
+.call-icon.active {
+  font-size: 1.2em;
+  animation: pulse 2s infinite;
+}
+
+.call-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.call-buttons .call-button {
+  flex: 1;
+  min-width: 0;
+}
+
+.call-status-display {
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.status-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+.status-text.idle {
+  color: #666;
+}
+
+.status-text.calling {
+  color: #ff9800;
+}
+
+.status-text.connected {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.status-text.ended {
+  color: #f44336;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .call-buttons {
+    flex-direction: column;
+  }
+
+  .call-button {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .in-call-controls {
+    padding: 12px;
+  }
+}

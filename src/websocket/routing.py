@@ -1,16 +1,12 @@
+"""
+WebSocket URL routing for the Voice AI Platform
+"""
 from django.urls import re_path
-from channels.routing import ProtocolTypeRouter, URLRouter
-from channels.security.websocket import AllowedHostsOriginValidator
 from .consumers import ChatConsumer
 
-application = ProtocolTypeRouter(
-    {
-        "websocket": AllowedHostsOriginValidator(
-            URLRouter(
-                [
-                    re_path(r"ws/connect/(?P<token>[^/]+)/$", ChatConsumer.as_asgi()),
-                ]
-            )
-        ),
-    }
-)
+websocket_urlpatterns = [
+    re_path(
+        r"ws/chat/(?P<conversation_id>\w+)/(?P<token>[^/]+)/$", ChatConsumer.as_asgi()
+    ),
+    re_path(r"ws/chat/(?P<token>[^/]+)/$", ChatConsumer.as_asgi()),
+]

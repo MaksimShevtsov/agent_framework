@@ -1,20 +1,20 @@
-.PHONY install-pre-commit:
+.PHONY: install-pre-commit
 install-pre-commit:
 	@echo "Installing pre-commit hooks"
 	uv run pre-commit uninstall; uv run pre-commit install
 
-.PHONY install:
+.PHONY: install
 install:
 	@echo "Installing dependencies"
 	uv sync --all-extras
 	@make install-pre-commit
 
-.PHONY lint:
+.PHONY: lint
 lint:
 	@echo "Running linter"
 	uv run pre-commit run --all-files
 
-.PHONY run:
+.PHONY: run
 run:
 	@echo "Running the app"
 	uv run src/manage.py runserver 0.0.0.0:8000
@@ -44,7 +44,7 @@ migrations:
 	uv run src/manage.py makemigrations
 
 
-.PHONY: migrations app
+.PHONY: migrations-app
 migrations-app:
 	@echo "Creating migrations"
 	@read -p "Enter app name: " app_name; \
@@ -78,3 +78,9 @@ startapp:
 	@read -p "Enter app name: " app_name; \
 	mkdir -p src/apps/$$app_name; \
 	uv run src/manage.py startapp $$app_name src/apps/$$app_name
+
+
+.PHONY: run_client
+run_client:
+	@echo "Running client"
+	cd /workspaces/backend/client-react && npm start
